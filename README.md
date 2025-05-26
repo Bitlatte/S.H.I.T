@@ -3,11 +3,11 @@
 
 Fuck that.
 
-This is SHIT SSG. It's a Static HTML Is Terrific Site Generator.
+This is SHIT. It's a simple static site generator.
 It's small. It's simple. It turns your Markdown into HTML and then politely fucks off. Nothing fancy, just the basics to get your shit online.
 
 # What is this SHIT?
-SHIT SSG is a command-line tool written in Go that takes your content (mostly Markdown), shoves it through some templates, and spits out a folder full of static HTML files. You know, for a website.
+SHIT is a command-line tool written in Go that takes your content (mostly Markdown), shoves it through some templates, and spits out a folder full of static HTML files. You know, for a website.
 
 It's designed for when you just want to write some stuff and have it look vaguely presentable without selling your soul to a JavaScript ecosystem.
 
@@ -69,7 +69,7 @@ go install [github.com/Bitlatte/S.H.I.T@latest](https://github.com/Bitlatte/S.H.
 This will install it to your $GOPATH/bin (or $HOME/go/bin). Make sure that's in your $PATH.
 
 # How to Use This SHIT (Usage)
-SHIT SSG expects a certain project layout. It's not super strict, but follow these conventions and your life will be easier.
+SHIT  expects a certain project layout. It's not super strict, but follow these conventions and your life will be easier.
 
 1. Directory Structure:
 
