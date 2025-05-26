@@ -1,0 +1,36 @@
+# Compiled Go binaries
+shit
+*.exe
+*.test
+
+# Output directory (and common alternatives)
+/public/
+/dist/
+
+# Go Module
+/vendor/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# IDE / Editor specific files
+.idea/
+.vscode/
+*.swp
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.*
+!/.env.example
+
+# Coverage
+coverage.out
+*.cover
