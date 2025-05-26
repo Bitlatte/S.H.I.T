@@ -1,0 +1,9 @@
+<header>
+    <h1>{{ .PageTitle }}</h1>
+    {{ if .Date }}
+        <p class="date">Published on: {{ .Date }}</p>
+    {{ end }}
+    {{ with .Params.author }}
+        <p class="author">By: {{ . }}</p>
+    {{ end }}
+</header>

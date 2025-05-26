@@ -1,0 +1,10 @@
+<footer>
+    <p>&copy; {{ .SiteTitle }}. BaseURL: {{ .BaseURL }}</p>
+    {{ with .Params.tags }}
+        <p>Tags:
+            {{ range . }}
+                <span class="tag">{{ . }}</span>
+            {{ end }}
+        </p>
+    {{ end }}
+</footer>
