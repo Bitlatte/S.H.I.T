@@ -63,16 +63,16 @@ go build -o shit .
 Now you can run ./shit from that directory, or move the shit executable somewhere in your $PATH.
 
 Option 2: go install (If you're feeling fancy)
-
+```sh
 go install [github.com/Bitlatte/S.H.I.T@latest](https://github.com/Bitlatte/S.H.I.T@latest)
-
+```
 This will install it to your $GOPATH/bin (or $HOME/go/bin). Make sure that's in your $PATH.
 
 # How to Use This SHIT (Usage)
 SHIT  expects a certain project layout. It's not super strict, but follow these conventions and your life will be easier.
 
 1. Directory Structure:
-
+```sh
 your-shitty-site/
 ├── content/               # Your Markdown files go here. Subfolders are fine.
 │   ├── index.md
@@ -92,16 +92,15 @@ your-shitty-site/
 ├── config.yaml            # Optional: configuration.
 └── public/                # Default output directory (where the generated site goes).
                            # This gets created/cleared by the build command.
-
+```
 2. Configuration (config.yaml - Optional):
 
 Create a config.yaml in your project root if you want to override defaults:
-
-# config.yaml
+```yaml
 outputDir: "dist"  # Default is "public"
 baseURL: "[https://your-shitty-site.com](https://your-shitty-site.com)" # Default is ""
 siteTitle: "My Absolutely Terrific SHIT Site" # Default is "My Terrific SHIT Site"
-
+```
 3. Commands:
 
 Build the site:
