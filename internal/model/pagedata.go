@@ -9,4 +9,5 @@ type PageData struct {
 	BaseURL   string
 	Date      string
 	Params    map[string]interface{}
+	Layout    string // New field for specifying the layout
 }

@@ -2,6 +2,7 @@
 title: "My First Terrific Post with Frontmatter!"
 date: "2025-05-26"
 author: "Dr. Terrific"
+layout: post.html
 tags: ["go", "ssg", "fun"]
 custom_greeting: "Hello from the frontmatter!"
 ---
