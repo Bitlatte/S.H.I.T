@@ -180,15 +180,25 @@ func runBuildProcess(cfg config.Config) error {
 			Params:    fmData,
 		}
 
+		// Check for layout in frontmatter
+		if layout, ok := fmData["layout"].(string); ok {
+			pageData.Layout = layout
+		}
+
 		outFile, createErr := os.Create(outputPath)
 		if createErr != nil {
 			return fmt.Errorf("failed to create output file '%s': %w", outputPath, createErr)
 		}
 		defer outFile.Close()
 
-		if execErr := templates.ExecuteTemplate(outFile, conventionalBaseLayout, pageData); execErr != nil {
+		layoutToExecute := conventionalBaseLayout
+		if pageData.Layout != "" {
+			layoutToExecute = pageData.Layout
+		}
+
+		if execErr := templates.ExecuteTemplate(outFile, layoutToExecute, pageData); execErr != nil {
 			if strings.Contains(execErr.Error(), "template not defined") {
-				return fmt.Errorf("failed to execute template for '%s': base layout '%s' not found or not parsed correctly. Original error: %w", outputPath, conventionalBaseLayout, execErr)
+				return fmt.Errorf("failed to execute template for '%s': layout '%s' not found or not parsed correctly. Original error: %w", outputPath, layoutToExecute, execErr)
 			}
 			return fmt.Errorf("failed to execute template for '%s': %w", outputPath, execErr)
 		}
