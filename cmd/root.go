@@ -10,10 +10,13 @@ import (
 	"github.com/Bitlatte/S.H.I.T/internal/config"
 
 	"github.com/spf13/viper"
+
+	"github.com/Bitlatte/S.H.I.T/internal/model"
 )
 
 var cfgFile string
 var appConfig config.Config
+var siteData *model.SiteData // Package-level variable to store site data
 
 var rootCmd = &cobra.Command{
 	Use:   "S.H.I.T",
@@ -25,7 +28,9 @@ your Markdown content, process it, and output a static HTML website.`,
 	},
 }
 
-func Execute() {
+// Execute executes the root command.
+func Execute(site *model.SiteData) {
+	siteData = site // Store the site data in the package-level variable
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

@@ -1,17 +1,17 @@
-{{/* layouts/post.html */}}
+{{/* layouts/single-post.html */}}
 {{template "base" .}}
 
-{{define "title"}}{{.Item.Title}} | {{.Site.Config.title}}{{end}}
+{{define "title"}}{{.Item.Title}} (Blog Post) | {{.Site.Config.title}}{{end}}
 
 {{define "main"}}
     <article>
         <h2>{{.Item.Title}}</h2>
         <p><em><small>Published: {{.Item.Date.Format "January 2, 2006"}}</small></em></p>
-        <p><em><small>(Note: This page is using the 'post.html' layout, now updated to extend base.html)</small></em></p>
         <hr>
         <div>
             {{.Item.ContentHTML}}
         </div>
         <hr>
+        <p><em><small>Rendered with single-post.html, extending base.html</small></em></p>
     </article>
 {{end}}

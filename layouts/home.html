@@ -1,0 +1,26 @@
+{{/* layouts/home.html */}}
+{{template "base" .}}
+
+{{define "title"}}Homepage | {{.Site.Config.title}}{{end}}
+
+{{define "main"}}
+    <h2>Welcome to the Homepage!</h2>
+    <p>This is the custom homepage content, fitting into the main block.</p>
+
+    <h3>Latest Posts:</h3>
+    {{ if .Site.Posts }}
+        <ul>
+            {{ range $index, $post := .Site.Posts }}
+                {{ if lt $index 5 }} {{/* Show up to 5 posts */}}
+                    <li>
+                        <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
+                        (<span>{{ $post.Date.Format "January 2, 2006" }}</span>)
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    {{ else }}
+        <p>No posts yet.</p>
+    {{ end }}
+    <p><em><small>Rendered with home.html, extending base.html</small></em></p>
+{{end}}

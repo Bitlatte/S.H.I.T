@@ -26,7 +26,8 @@ and static directories for changes and automatically rebuilds the site.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// Initial build
 		log.Println("Performing initial build...")
-		if err := runBuildProcess(appConfig); err != nil {
+		// siteData is the package-level variable from cmd/root.go
+		if err := runBuildProcess(appConfig, siteData); err != nil {
 			// Log fatal if initial build fails, as there's nothing to serve.
 			log.Fatalf("Initial build failed: %v. Please fix issues and try again.", err)
 			return err // Should be unreachable due to log.Fatalf
@@ -74,7 +75,8 @@ and static directories for changes and automatically rebuilds the site.`,
 						}
 						buildTimer = time.AfterFunc(debounceDuration, func() {
 							log.Println("Rebuilding site due to changes...")
-							if err := runBuildProcess(appConfig); err != nil {
+							// siteData is the package-level variable from cmd/root.go
+							if err := runBuildProcess(appConfig, siteData); err != nil {
 								log.Printf("Error during rebuild: %v", err)
 							} else {
 								log.Println("Site rebuilt successfully.")

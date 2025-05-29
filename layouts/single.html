@@ -1,0 +1,15 @@
+{{/* layouts/single.html */}}
+{{template "base" .}}
+
+{{define "title"}}{{.Item.Title}} | {{.Site.Config.title}}{{end}}
+
+{{define "main"}}
+    <h2>{{.Item.Title}}</h2>
+    <p><em><small>Date: {{.Item.Date.Format "2006-01-02"}} | Type: {{.Item.Type}}</small></em></p>
+    <hr>
+    <article>
+        {{.Item.ContentHTML}}
+    </article>
+    <hr>
+    <p><em><small>Rendered with single.html, extending base.html</small></em></p>
+{{end}}

@@ -1,17 +1,45 @@
+{{ define "base" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .PageTitle }} | {{ .SiteTitle }}</title>
-    <link rel="stylesheet" href="{{ .BaseURL }}/css/style.css">
+    <title>{{ block "title" . }}{{ .Site.Config.title }}{{ end }}</title>
+    {{ block "head" . }}
+        <!-- Additional head elements can be injected here -->
+    {{ end }}
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; }
+        header, footer { background-color: #f0f0f0; padding: 10px; margin-bottom: 20px; }
+        nav a { margin-right: 10px; }
+        .container { max-width: 800px; margin: auto; }
+    </style>
 </head>
 <body>
     <div class="container">
-        {{ template "header.html" . }} <main>
-            {{ .Content }}
+        <header>
+            <h1><a href="/">{{ .Site.Config.title }}</a></h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/posts/">Posts</a>
+                <a href="/about/">About</a>
+                <!-- Add other common navigation links here -->
+            </nav>
+        </header>
+
+        <main>
+            {{ block "main" . }}
+                <!-- Default content if not overridden by a specific page -->
+                <h2>Welcome (Default Main Content)</h2>
+                <p>This content appears if a page doesn't define its own 'main' block.</p>
+            {{ end }}
         </main>
 
-        {{ template "footer.html" . }} </div>
+        <footer>
+            <p>&copy; {{ .Site.Config.year }} {{ .Site.Config.title }}. All rights reserved.</p>
+            {{ block "footer-scripts" . }}{{ end }}
+        </footer>
+    </div>
 </body>
 </html>
+{{ end }}

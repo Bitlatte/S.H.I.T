@@ -1,0 +1,24 @@
+{{/* layouts/list-posts.html */}}
+{{template "base" .}}
+
+{{define "title"}}All Posts | {{.Site.Config.title}}{{end}}
+
+{{define "main"}}
+    <h2>All Blog Posts</h2>
+    {{ if .Site.Posts }}
+        <ul>
+            {{ range .Site.Posts }}
+                <li>
+                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                    <p><em><small>Published on {{ .Date.Format "January 2, 2006" }}</small></em></p>
+                    {{ if .Summary }}
+                        <p>{{ .Summary }}</p>
+                    {{ end }}
+                </li>
+            {{ end }}
+        </ul>
+    {{ else }}
+        <p>No posts found.</p>
+    {{ end }}
+    <p><em><small>Rendered with list-posts.html, extending base.html</small></em></p>
+{{end}}
